@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\back",
+    "\\static"
   ],
-  "SelectedNode": "\\main.css",
+  "SelectedNode": "\\index.js",
   "PreviewInSolutionExplorer": false
 }
