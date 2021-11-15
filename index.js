@@ -3,10 +3,10 @@ const path = require('path')
 const express = require('express')
 const app = express()
 
+const routes = require("./routes")
+
 const hostname = '127.0.0.1';
 const port = 3000;
-
-const numerologie = require('./back/numerologie');
 
 app.use(function (req, res, next) {
     date = new Date(Date.now())
@@ -16,21 +16,11 @@ app.use(function (req, res, next) {
 
 app.use("/static", express.static(path.join(__dirname, '/static')))
 
-app.get(encodeURI('/prénom'), (req, res) => {
-    console.log(req.query)
-    prenom = req.query["valeur"]
-    chiffre = numerologie.chiffre(prenom)
-
-    res.json({
-        prenom: prenom,
-        chiffre: chiffre,
-    })
-})
-
 app.get('/', (req, res) => {
     res.redirect(301, '/static/index.html')
 })
 
+app.use('/', routes)
 
 app.use(function (req, res) {
     console.log("et c'est le 404 : " + req.url);
